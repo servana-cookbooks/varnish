@@ -18,9 +18,10 @@ end
 
 execute "touch #{node['varnish']['storage_file']}" do 
   action :run
+  only_if do File.exists?("#{node['varnish']['storage_dir']}") end
 end
 
-template "#{node['varnish']['dir']}/default.vcl" do
+template "#{node['varnish']['dir']}/#{node['varnish']['vcl_conf']}" do
   source "default.vcl.erb"
   owner "root"
   group "root"

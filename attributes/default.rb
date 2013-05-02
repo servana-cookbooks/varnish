@@ -8,12 +8,12 @@
 #
 case platform
 when "debian","ubuntu"
-  default['varnish']['dir'] = "/etc/varnish"
-  default['varnish']['default'] = "/etc/default/varnish"
+  default['varnish']['dir'] = '/etc/varnish'
+  default['varnish']['default'] = '/etc/default/varnish'
 end
 
-default['varnish']['dir'] = "/etc/varnish"
-default['varnish']['default'] = "/etc/default/varnish"
+default['varnish']['dir'] = '/etc/varnish'
+default['varnish']['default'] = '/etc/default/varnish'
 
 default['varnish']['start'] = 'yes'
 default['varnish']['nfiles'] = 131072
@@ -25,8 +25,10 @@ default['varnish']['vcl_conf'] = 'default.vcl'
 default['varnish']['secret_file'] = '/etc/varnish/secret'
 default['varnish']['admin_listen_address'] = '127.0.0.1'
 default['varnish']['admin_listen_port'] = '6082'
-default['varnish']['user'] = 'ubuntu'
-default['varnish']['group'] = 'ubuntu'
+
+default['varnish']['user'] = 'varnish'
+default['varnish']['group'] = 'varnish'
+
 default['varnish']['ttl'] = '120'
 default['varnish']['min_threads'] ='5'
 default['varnish']['max_threads'] = '500'
