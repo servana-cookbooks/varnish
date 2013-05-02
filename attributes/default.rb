@@ -8,8 +8,8 @@
 #
 case platform
 when "debian","ubuntu"
-  set['varnish']['dir'] = "/etc/varnish"
-  set['varnish']['default'] = "/etc/default/varnish"
+  default['varnish']['dir'] = "/etc/varnish"
+  default['varnish']['default'] = "/etc/default/varnish"
 end
 
 default['varnish']['start'] = 'yes'
