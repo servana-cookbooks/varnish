@@ -13,7 +13,7 @@ directory "#{node['varnish']['storage_dir']}" do
   owner node['varnish']['user']
   group node['varnish']['group']
   action :create
-  recursive :true
+  recursive true
 end
 
 execute "touch #{node['varnish']['storage_file']}" do 
