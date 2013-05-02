@@ -12,6 +12,9 @@ when "debian","ubuntu"
   default['varnish']['default'] = "/etc/default/varnish"
 end
 
+default['varnish']['dir'] = "/etc/varnish"
+default['varnish']['default'] = "/etc/default/varnish"
+
 default['varnish']['start'] = 'yes'
 default['varnish']['nfiles'] = 131072
 default['varnish']['memlock'] = 82000
@@ -32,11 +35,12 @@ default['varnish']['storage'] = 'file'
 default['varnish']['storage_dir'] = '/mnt/tab/local/varnish'
 default['varnish']['storage_file'] = '/mnt/tab/local/varnish/varnish_storage.bin'
 
+default['varnish']['lock_down'] = false
+
 case node['environment']
 when 'production'
 	default['varnish']['storage_size'] = '10G'
-	default['varnish']['lock_down'] = false
-when 'staging', 'tab_development'
+when 'staging', 'development'
 	default['varnish']['storage_size'] = '1G'
 	default['varnish']['lock_down'] = true
 end
