@@ -32,8 +32,9 @@ default['varnish']['min_threads'] ='5'
 default['varnish']['max_threads'] = '500'
 default['varnish']['thread_timeout'] = '300'
 default['varnish']['storage'] = 'file'
-default['varnish']['storage_dir'] = '/mnt/tab/local/varnish'
-default['varnish']['storage_file'] = '/mnt/tab/local/varnish/varnish_storage.bin'
+
+default['varnish']['storage_dir'] = '/opt/varnish'
+default['varnish']['storage_file'] = '/opt/varnish/varnish_storage.bin'
 
 default['varnish']['lock_down'] = false
 
