@@ -33,7 +33,7 @@ template "#{node['varnish']['dir']}/maintenance.vcl" do
   mode 0644
 end
 
-template node['varnish']['default'] do
+template "#{node['varnish']['default']}" do
   source "custom-default.erb"
   owner "root"
   group "root"
