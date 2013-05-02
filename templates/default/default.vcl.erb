@@ -71,18 +71,15 @@ sub vcl_recv {
 
 <% if node['varnish']['lock_down'] %>
 
-	 if (req.backend==frontend){	
-
-		 if (req.http.Authorization || req.http.Authenticate){
-			  return (pass);
-		 }
-
-		 if (! req.http.Authorization ~ "Basic <%=node['varnish']['lock_down']%>")
-     {
-    		error 401 "Restricted";
-     }
-	
-	 }
+#	 if (req.backend==frontend){	
+#		 if (req.http.Authorization || req.http.Authenticate){
+#			  return (pass);
+#		 }
+#		 if (! req.http.Authorization ~ "Basic <%=node['varnish']['lock_down']%>")
+#    {
+#    		error 401 "Restricted";
+#     }	
+#	 }
 
 <% end %>
 
@@ -92,16 +89,16 @@ sub vcl_recv {
 sub vcl_hit {
 	if (req.request == "PURGE")
   {
-		purge("req.http.host == " req.http.host " && req.url ~ " req.url "$");
-		error 200 "Purged.";
+		#purge("req.http.host == " req.http.host " && req.url ~ " req.url "$");
+		#error 200 "Purged.";
 	}
 }
 
 sub vcl_miss {
 	if (req.request == "PURGE")
   {
-		purge("req.http.host == " req.http.host " && req.url ~ " req.url "$");
-		error 200 "Purged.";
+		#purge("req.http.host == " req.http.host " && req.url ~ " req.url "$");
+		#error 200 "Purged.";
 	}
 }
 
@@ -130,7 +127,7 @@ sub vcl_fetch {
 
   if (!beresp.ttl > 0s) 
   {
-        set beresp.cacheable = true;
+        #set beresp.cacheable = true;
         unset beresp.http.expires;
         # set beresp.http.Cache-Control = "max-age = 3600";
         # set beresp.ttl = 6h;
