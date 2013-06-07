@@ -20,9 +20,9 @@ sub vcl_recv {
 		if (!client.ip ~ purge_acl)
     {
 		    error 405 "Not allowed.";
-		}
+      }
 		return (lookup);
-	}
+  }
 
   set req.backend=appserver;
 
@@ -89,16 +89,16 @@ sub vcl_recv {
 sub vcl_hit {
 	if (req.request == "PURGE")
   {
-		#purge("req.http.host == " req.http.host " && req.url ~ " req.url "$");
-		#error 200 "Purged.";
+		purge;
+		error 200 "Purged.";
 	}
 }
 
 sub vcl_miss {
 	if (req.request == "PURGE")
   {
-		#purge("req.http.host == " req.http.host " && req.url ~ " req.url "$");
-		#error 200 "Purged.";
+		purge;
+		error 200 "Purged.";
 	}
 }
 
