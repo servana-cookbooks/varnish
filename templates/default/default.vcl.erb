@@ -1,7 +1,7 @@
 backend appserver {
 	.host = "<%= node['varnish']['backend_host'] %>";
 	.port = "<%= node['varnish']['backend_port'] %>";
-  # had the probe up for a few minutes and it brought down the unicons in staging. 
+  .first_byte_timeout = <%= node['varnish']['timeout'] %>; 
   #.probe = { .url = "/heartbeat"; .interval = 5s; .timeout = 1s; .window = 5;.threshold = 3; }
 }
 
